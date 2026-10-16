@@ -207,3 +207,6 @@ dialog textarea { width: 100%; resize: vertical; font: 12px/1.45 ui-monospace, m
 .lang select { padding: 5px 6px; }
 .lang-links { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
 .lang-links a[aria-current="true"] { font-weight: 700; text-decoration: none; }
+.about .notice { border: 1px solid color-mix(in srgb, #f59e0b 55%, var(--border)); border-radius: 8px; padding: 10px 12px; margin-top: 10px; background: color-mix(in srgb, #f59e0b 7%, transparent); }
+.about .notice ul { padding-left: 18px; margin: 8px 0; }
+.license-note { font-size: 12px; line-height: 1.5; border-left: 3px solid #f59e0b; padding: 6px 10px; background: color-mix(in srgb, #f59e0b 8%, transparent); border-radius: 4px; }

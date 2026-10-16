@@ -183,6 +183,10 @@
       <details><summary data-i18n="faq.q2">¿Qué pasó con Charas-Project?</summary><p data-i18n="faq.a2">El sitio original lleva años sin mantenimiento. Charas Studio conserva todo su archivo de sprites para que siga disponible.</p></details>
       <details><summary data-i18n="faq.q3">¿Para qué versiones de RPG Maker sirve?</summary><p data-i18n="faq.a3">Los formatos son los de RPG Maker 2000/2003 (charsets de 24×32 por frame, facesets de 48×48). También funcionan en EasyRPG Player.</p></details>
       <details><summary data-i18n="faq.q4">¿Puedo usar los personajes en mi juego?</summary><p data-i18n="faq.a4">Incluye los créditos de los autores: el botón ⓘ genera el texto listo para copiar en los créditos o el README de tu juego.</p></details>
+      <details class="notice" open>
+        <summary data-i18n="faq.q5">¿Puedo usarlos en un juego comercial?</summary>
+        <div data-i18n-html="faq.a5"><ul><li><strong>EasyChar (set principal) y Tiny Worlds: sí.</strong> Sus autores los publicaron con licencias CC-BY o CC0, que permiten juegos comerciales si incluyes los créditos (botón ⓘ).</li><li><strong>charas2 (Charas-Project): no recomendado.</strong> El sitio nunca publicó una licencia y cientos de piezas son rips o ediciones de juegos comerciales (Final Fantasy, Breath of Fire, Pokémon, Zelda, Dragon Ball…) o del RTP de RPG Maker, que solo puede usarse con una licencia del RPG Maker correspondiente.</li><li><strong>Yume Nikki y Facesets (beta) de EasyChar: no recomendado.</strong> Incluyen material de KIKIYAMA sin licencia conocida o aún no tienen licencia definida.</li></ul><p>Charas Studio no concede licencias ni ofrece asesoría legal: comprobar los derechos de cada sprite es responsabilidad de quien lo usa.</p></div>
+      </details>
     </section>
     <nav class="lang-links" id="langLinks" aria-label="Languages">
       <a href="?lang=es" hreflang="es" lang="es">Español</a>
@@ -204,6 +208,7 @@
     <form method="dialog">
       <h2 data-i18n="dlg.title">Créditos y licencias</h2>
       <p class="muted" data-i18n="dlg.copyHint">Copia este texto en los créditos o README de tu juego.</p>
+      <p class="license-note" data-i18n-html="dlg.license"><strong>Uso comercial:</strong> EasyChar (set principal) y Tiny Worlds sí, con créditos. Los sprites de charas2, Yume Nikki y Facesets (beta) no se recomiendan: muchos vienen de juegos comerciales o no tienen licencia clara. Detalles en las preguntas frecuentes.</p>
       <label class="field-label" for="creditsText" data-i18n="dlg.thisChar">Este personaje</label>
       <textarea id="creditsText" readonly rows="9"></textarea>
       <div class="row-buttons"><button type="button" class="btn small" data-copy="creditsText" data-i18n="dlg.copy">Copiar</button></div>

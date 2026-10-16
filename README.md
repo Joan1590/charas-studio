@@ -36,5 +36,22 @@ make build     # imagen nginx de producción
 - `scraper/scrape_charas.py` — espejo de charas2 (`res_viewer.php`, fondo verde → transparente).
 - `scraper/extract_easychar.py` — PSD → PNG por capa; reglas de `@functions` portadas a JSON.
 
-Créditos: sprites de charas2 por sus autores (ver ⓘ en la app); assets de EasyChar bajo las
-licencias CC indicadas en el diálogo de créditos.
+## Licencias y uso comercial
+
+Charas Studio no concede licencias ni ofrece asesoría legal. Cada sprite conserva los derechos de su autor
+y comprobarlos es responsabilidad de quien lo use.
+
+| Set | Licencia | ¿Juego comercial? |
+| --- | --- | --- |
+| EasyChar (set principal) | CC-BY / CC0 según autor | Sí, incluyendo los créditos |
+| Tiny Worlds (EasyChar) | CC0 | Sí |
+| Yume Nikki (EasyChar) | KIKIYAMA: licencia desconocida | No recomendado |
+| Facesets beta (EasyChar) | Sin licencia definida | No recomendado |
+| charas2 (Charas-Project) | Nunca publicó licencia | **No recomendado** |
+
+Por qué charas2 no se recomienda para uso comercial: Charas-Project nunca publicó una licencia para los
+sprites, y al menos 592 de las 8.908 piezas nombran en su título o autor un juego comercial o se declaran
+rips (Final Fantasy, Breath of Fire, Pokémon, Zelda, Dragon Ball, Sailor Moon, Mega Man…). Muchas otras
+son ediciones del RTP de RPG Maker, cuya licencia solo permite usarlo con el RPG Maker correspondiente. La
+cifra real es mayor, porque la mayoría de las piezas no indican su origen. Para fan games gratuitos, úsalos
+bajo tu propia responsabilidad y da créditos (botón ⓘ en la app).
