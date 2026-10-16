@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charas Studio — Generador de charasets para RPG Maker (Charas-Project + EasyChar)</title>
+  <meta name="description" content="Crea charasets, facesets y battlechars para RPG Maker 2000/2003 gratis en el navegador. Más de 9.600 piezas: todo el archivo de Charas-Project (charas2) y EasyChar, con recolor, dibujo y exportación PNG de 256 colores.">
+  <link rel="canonical" href="https://joan1590.github.io/charas-studio/">
+  <link rel="alternate" hreflang="es" href="https://joan1590.github.io/charas-studio/?lang=es">
+  <link rel="alternate" hreflang="en" href="https://joan1590.github.io/charas-studio/?lang=en">
+  <link rel="alternate" hreflang="pt" href="https://joan1590.github.io/charas-studio/?lang=pt">
+  <link rel="alternate" hreflang="fr" href="https://joan1590.github.io/charas-studio/?lang=fr">
+  <link rel="alternate" hreflang="it" href="https://joan1590.github.io/charas-studio/?lang=it">
+  <link rel="alternate" hreflang="de" href="https://joan1590.github.io/charas-studio/?lang=de">
+  <link rel="alternate" hreflang="nl" href="https://joan1590.github.io/charas-studio/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://joan1590.github.io/charas-studio/?lang=sv">
+  <link rel="alternate" hreflang="da" href="https://joan1590.github.io/charas-studio/?lang=da">
+  <link rel="alternate" hreflang="ru" href="https://joan1590.github.io/charas-studio/?lang=ru">
+  <link rel="alternate" hreflang="x-default" href="https://joan1590.github.io/charas-studio/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
+  <!-- Social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Charas Studio">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://joan1590.github.io/charas-studio/">
+  <meta property="og:title" content="Charas Studio — Generador de charasets para RPG Maker">
+  <meta property="og:description" content="El clásico Charas Generator, de vuelta: más de 9.600 sprites de Charas-Project y EasyChar para crear personajes de RPG Maker 2000/2003 gratis.">
+  <meta property="og:image" content="https://joan1590.github.io/charas-studio/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Personajes pixel art creados con Charas Studio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Charas Studio — Generador de charasets para RPG Maker">
+  <meta name="twitter:description" content="Más de 9.600 sprites de Charas-Project y EasyChar para crear personajes de RPG Maker gratis.">
+  <meta name="twitter:image" content="https://joan1590.github.io/charas-studio/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Charas Studio",
+    "alternateName": ["Charas Generator online", "Charas-Project charas2", "Generador de charasets"],
+    "url": "https://joan1590.github.io/charas-studio/",
+    "image": "https://joan1590.github.io/charas-studio/og-image.png",
+    "description": "Generador gratuito de charasets, facesets y battlechars para RPG Maker 2000/2003 con todo el archivo de Charas-Project (charas2) y EasyChar.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Cualquiera (navegador web)",
+    "inLanguage": ["es", "en"],
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "featureList": [
+      "8.908 sprites de Charas-Project: charasets, facesets y battlechars",
+      "Assets de EasyChar con variantes child/adult",
+      "Recolor por mapa de degradado",
+      "Lápiz, borrador y cuentagotas",
+      "Hoja RPG Maker 2000 de 288x256 en PNG de 256 colores"
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f6bd7b' d='M2 1h4v3H2z'/%3E%3Cpath fill='%23181818' d='M2 0h4v1H2zM3 2h1v1H3zM5 2h1v1H5z'/%3E%3Cpath fill='%232563eb' d='M1 4h6v3H1z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply saved theme before paint to avoid flashing
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}
+  </script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand"><span class="logo" aria-hidden="true"></span>Charas Studio</h1>
+    <div class="pickers">
+      <label><span data-i18n="ui.generator">Generador</span> <select id="genSelect"></select></label>
+      <label><span data-i18n="ui.set">Set</span> <select id="setSelect"></select></label>
+      <label id="variantWrap" class="switch" hidden>
+        <span id="variantA"></span>
+        <input type="checkbox" id="variantToggle" role="switch">
+        <span id="variantB"></span>
+      </label>
+    </div>
+    <div class="actions">
+      <label class="lang">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        <select id="langSelect" data-i18n-attr="aria-label=ui.language" aria-label="Idioma"></select>
+      </label>
+      <button id="themeBtn" class="icon-btn" data-i18n-attr="aria-label=ui.theme;title=ui.theme" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      </button>
+      <button id="infoBtn" class="icon-btn" data-i18n-attr="aria-label=ui.credits;title=ui.credits" aria-label="Créditos y licencias" title="Créditos y licencias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel preview" data-i18n-attr="aria-label=ui.preview" aria-label="Vista previa">
+      <div class="panel-head">
+        <h2 data-i18n="ui.preview">Vista previa</h2>
+        <label class="zoom"><span data-i18n="ui.zoom">Zoom</span> <input type="range" id="zoom" min="1" max="8" step="1"></label>
+      </div>
+      <div class="tools" role="toolbar" data-i18n-attr="aria-label=ui.drawTools" aria-label="Herramientas de dibujo">
+        <button class="icon-btn active" data-tool="pencil" data-i18n-attr="aria-label=ui.pencil;title=ui.pencilTip" aria-label="Lápiz" title="Lápiz (clic derecho: cuentagotas)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/></svg>
+        </button>
+        <button class="icon-btn" data-tool="eraser" data-i18n-attr="aria-label=ui.eraser;title=ui.eraser" aria-label="Borrador" title="Borrador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21h10M5 15l9-9 5 5-7 7H8z"/></svg>
+        </button>
+        <input type="color" id="brushColor" value="#000000" data-i18n-attr="aria-label=ui.brushColor;title=ui.brushColor" aria-label="Color del lápiz" title="Color del lápiz">
+        <button class="icon-btn" id="clearPaint" data-i18n-attr="aria-label=ui.clearPaint;title=ui.clearPaint" aria-label="Borrar dibujo" title="Borrar dibujo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="stage checker">
+        <canvas id="out" width="72" height="128"></canvas>
+      </div>
+      <div class="anim-row">
+        <div class="anim checker"><canvas id="anim" width="24" height="32"></canvas></div>
+        <div class="anim-controls">
+          <div id="poseButtons" class="pose-buttons" role="group" data-i18n-attr="aria-label=ui.animation" aria-label="Animación"></div>
+          <button id="playBtn" class="btn small" aria-pressed="true">Pausa</button>
+        </div>
+      </div>
+      <div class="row-buttons">
+        <button id="downloadBtn" class="btn primary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-i18n="ui.downloadPng">Descargar PNG</span>
+        </button>
+        <button id="randomBtn" class="btn" data-i18n="ui.random">Aleatorio</button>
+        <button id="resetBtn" class="btn" data-i18n="ui.reset">Reiniciar</button>
+      </div>
+      <details class="sheet" open>
+        <summary data-i18n="sheet.title">Hoja RPG Maker 2000</summary>
+        <div id="sheetView" class="sheet-view checker">
+          <canvas id="sheet" width="288" height="256"></canvas>
+          <div id="slots" class="slots" role="group" data-i18n-attr="aria-label=sheet.slots" aria-label="Huecos de la hoja"></div>
+        </div>
+        <div class="row-buttons">
+          <button id="placeBtn" class="btn small" data-i18n="sheet.place">Colocar en hueco</button>
+          <button id="clearSlotBtn" class="btn small" data-i18n="sheet.clear">Vaciar hueco</button>
+          <button id="loadSheetBtn" class="btn small" data-i18n="sheet.load">Cargar hoja…</button>
+          <input type="file" id="sheetFile" accept="image/png,image/bmp" hidden>
+          <button id="sheetDownload" class="btn small primary">Descargar hoja RM2k</button>
+        </div>
+        <p class="muted hint" data-i18n="sheet.hint">PNG de 256 colores con el índice 0 transparente, listo para RPG Maker 2000/2003.</p>
+      </details>
+    </section>
+
+    <section class="panel layers" data-i18n-attr="aria-label=ui.layers" aria-label="Capas">
+      <div class="panel-head"><h2 data-i18n="ui.layers">Capas</h2></div>
+      <div id="layerList" class="layer-list"></div>
+    </section>
+
+    <section class="panel browser" data-i18n-attr="aria-label=ui.catalog" aria-label="Catálogo">
+      <div class="panel-head">
+        <h2 id="browserTitle" data-i18n="ui.catalog">Catálogo</h2>
+        <span id="browserCount" class="muted"></span>
+      </div>
+      <div class="browser-tools">
+        <input type="search" id="search" data-i18n-attr="placeholder=ui.search;aria-label=ui.searchLabel" placeholder="Buscar por nombre o autor…" aria-label="Buscar sprites">
+        <label id="thumbRowWrap"><span data-i18n="ui.row">Fila</span> <select id="thumbRow"></select></label>
+      </div>
+      <div id="grid" class="grid" role="listbox" data-i18n-attr="aria-label=ui.sprites" aria-label="Sprites"></div>
+    </section>
+  </main>
+
+  <noscript><p class="panel noscript">Activa JavaScript para usar el generador. · Enable JavaScript to use the generator.</p></noscript>
+
+  <footer class="about">
+    <section>
+      <h2 data-i18n="about.h2">Generador de charasets para RPG Maker, gratis y online</h2>
+      <p data-i18n-html="about.p"><strong>Charas Studio</strong> recupera el clásico <strong>Charas Generator</strong> de Charas-Project (charas2), abandonado desde hace años, y lo une al motor de <a href="https://jetrotal.github.io/EasyChar/" rel="noopener" target="_blank">EasyChar</a>. Combina cuerpos, caras, ropa, peinados y objetos para crear <strong>charasets</strong> (72×128), <strong>facesets</strong> (48×48) y <strong>battlechars</strong> para RPG Maker 2000, RPG Maker 2003 y EasyRPG Player.</p>
+      <ul>
+        <li data-i18n="about.li1">8.908 sprites de Charas-Project en 17 sets: Chara-medium, Chara-tall, Chara-little, soldados, monstruos, enanos e isométricos.</li>
+        <li data-i18n="about.li2">Los sets de EasyChar (con variantes niño/adulto), Yume Nikki y Tiny Worlds.</li>
+        <li data-i18n="about.li3">Recolor con mapa de degradado, opacidad por capa y orden delante/detrás por frame.</li>
+        <li data-i18n="about.li4">Lápiz, borrador y cuentagotas para retocar píxel a píxel.</li>
+        <li data-i18n="about.li5">Hoja de 8 personajes (288×256) exportada como PNG de 256 colores con el color 0 transparente.</li>
+      </ul>
+    </section>
+    <section>
+      <h2 data-i18n="faq.h2">Preguntas frecuentes</h2>
+      <details><summary data-i18n="faq.q1">¿Es gratis?</summary><p data-i18n="faq.a1">Sí. Funciona en el navegador, sin registro ni instalación.</p></details>
+      <details><summary data-i18n="faq.q2">¿Qué pasó con Charas-Project?</summary><p data-i18n="faq.a2">El sitio original lleva años sin mantenimiento. Charas Studio conserva todo su archivo de sprites para que siga disponible.</p></details>
+      <details><summary data-i18n="faq.q3">¿Para qué versiones de RPG Maker sirve?</summary><p data-i18n="faq.a3">Los formatos son los de RPG Maker 2000/2003 (charsets de 24×32 por frame, facesets de 48×48). También funcionan en EasyRPG Player.</p></details>
+      <details><summary data-i18n="faq.q4">¿Puedo usar los personajes en mi juego?</summary><p data-i18n="faq.a4">Incluye los créditos de los autores: el botón ⓘ genera el texto listo para copiar en los créditos o el README de tu juego.</p></details>
+    </section>
+    <nav class="lang-links" id="langLinks" aria-label="Languages">
+      <a href="?lang=es" hreflang="es" lang="es">Español</a>
+      <a href="?lang=en" hreflang="en" lang="en">English</a>
+      <a href="?lang=pt" hreflang="pt" lang="pt">Português</a>
+      <a href="?lang=fr" hreflang="fr" lang="fr">Français</a>
+      <a href="?lang=it" hreflang="it" lang="it">Italiano</a>
+      <a href="?lang=de" hreflang="de" lang="de">Deutsch</a>
+      <a href="?lang=nl" hreflang="nl" lang="nl">Nederlands</a>
+      <a href="?lang=sv" hreflang="sv" lang="sv">Svenska</a>
+      <a href="?lang=da" hreflang="da" lang="da">Dansk</a>
+      <a href="?lang=ru" hreflang="ru" lang="ru">Русский</a>
+    </nav>
+  </footer>
+
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+
+  <dialog id="infoDialog">
+    <form method="dialog">
+      <h2 data-i18n="dlg.title">Créditos y licencias</h2>
+      <p class="muted" data-i18n="dlg.copyHint">Copia este texto en los créditos o README de tu juego.</p>
+      <label class="field-label" for="creditsText" data-i18n="dlg.thisChar">Este personaje</label>
+      <textarea id="creditsText" readonly rows="9"></textarea>
+      <div class="row-buttons"><button type="button" class="btn small" data-copy="creditsText" data-i18n="dlg.copy">Copiar</button></div>
+      <details id="charasCredits" class="credits-all">
+        <summary data-i18n="dlg.allCharas">Créditos completos de charas2</summary>
+        <textarea id="charasCreditsText" readonly rows="12" data-i18n-attr="aria-label=dlg.allCharas" aria-label="Créditos completos de charas2"></textarea>
+        <div class="row-buttons"><button type="button" class="btn small" data-copy="charasCreditsText" data-i18n="dlg.copy">Copiar</button></div>
+      </details>
+      <div class="row-buttons end"><button class="btn primary" data-i18n="dlg.close">Cerrar</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

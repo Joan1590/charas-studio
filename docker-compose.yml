@@ -1,0 +1,14 @@
+services:
+  scraper:
+    build: ./scraper
+    volumes:
+      - ./scraper:/app
+      - ./public:/public
+    profiles: ["tools"]
+
+  web:
+    image: nginx:1.27-alpine
+    ports:
+      - "${WEB_PORT:-8093}:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro

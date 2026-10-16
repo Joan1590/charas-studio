@@ -1,0 +1,48 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Test
+        run: node --test tests/*.test.mjs
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      # SEO tags ship with the default URL; point them at the real Pages URL (fork, rename or custom domain)
+      - name: Set site URL
+        env:
+          DEFAULT_URL: https://joan1590.github.io/charas-studio
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: sed -i "s#${DEFAULT_URL}#${SITE_URL%/}#g" public/index.html public/sitemap.xml
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

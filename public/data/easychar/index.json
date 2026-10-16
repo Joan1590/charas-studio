@@ -1,0 +1,33 @@
+[
+ {
+  "id": "easychar",
+  "name": "EasyChar",
+  "source": "easychar",
+  "sets": [
+   {
+    "id": "spriteData",
+    "name": "EasyChar",
+    "file": "data/easychar/spriteData.json",
+    "count": 628
+   },
+   {
+    "id": "YN",
+    "name": "Yume Nikki",
+    "file": "data/easychar/YN.json",
+    "count": 42
+   },
+   {
+    "id": "tinyWorlds",
+    "name": "Tiny Worlds",
+    "file": "data/easychar/tinyWorlds.json",
+    "count": 53
+   },
+   {
+    "id": "Facesets",
+    "name": "Facesets (beta)",
+    "file": "data/easychar/Facesets.json",
+    "count": 36
+   }
+  ]
+ }
+]
